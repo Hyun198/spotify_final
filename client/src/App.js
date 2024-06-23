@@ -92,11 +92,11 @@ function App() {
         </form>
       </header>
       <Container>
-        <Row>
-          <Col>
+        <Row className="search-result">
+          <Col className="top-artist-column">
             {topArtist && (
               <div className="top-artist">
-                <img className="topArtist_imgs" src={topArtist.images[0].url} alt={topArtist.name} />
+                <img className="topArtist_img" src={topArtist.images[0].url} alt={topArtist.name} />
                 <p className="top-artist-name">{topArtist.name}</p>
                 <div className='top-artist-info'>
                   {topArtist.genres.map(genre => (
@@ -106,9 +106,9 @@ function App() {
               </div>
             )}
           </Col>
-          <Col>
+          <Col className="top-artist-tracks-column">
             <div className="top-artist-tracks">
-              {topArtistTracks.map((track) => (
+              {topArtistTracks.slice(0, 6).map((track) => (
                 <div key={track.id} className="top-artist-track" onClick={() => handleTrackSelect({ name: track.name, artist: track.artists[0].name })}>
                   <img className="track-image" src={track.album.images[0].url} alt={track.album.name} />
                   <div className="track-name">{track.name}</div>

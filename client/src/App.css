@@ -77,82 +77,71 @@ body {
 
 /*main-container*/
 
-.main_container {
+.search-result {
   display: flex;
+  justify-content: space-between;
 }
 
-.top-artist {
-  display: flex;
-  width: 30%;
-  margin-top: 10px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #f6f6f6;
+.top-artist-column {
+  width: 20%;
+  height: min-content;
+  padding: 20px;
+  background-color: #f8f9fa;
   border-radius: 20px;
 }
 
-.top-artist-info {
-  display: flex;
+.top-artist {
   text-align: center;
-  gap: 15px;
 }
+
+.topArtist_img {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
 
 .top-artist-name {
-  font-size: 2rem;
-  font-family: sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
-
-.top-artist .genre {
-  text-transform: capitalize;
-  font-family: sans-serif;
-  background-color: #333333;
-  width: 130px;
-  height: 50px;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.topArtist_imgs {
-  width: 200px;
-  height: 250px;
+.top-artist-info {
   margin-top: 10px;
-  border-radius: 50%;
 }
 
-/* 탑 아티스트 트랙*/
+.genre {
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+/*top-artist tracks*/
+
+.top-artist-tracks-column {
+  width: 70%;
+  padding: 20px;
+}
+
 .top-artist-tracks {
-  background-color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .top-artist-track {
   position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
+  width: calc(33.333% - 10px);
+  /* 3개의 트랙이 한 줄에 오도록 설정 */
+  cursor: pointer;
 }
-
 
 .track-image {
-  width: 150px;
-  height: 200px;
+  width: 100%;
+  border-radius: 10px;
   transition: transform 0.3s ease;
-}
-
-.track-name {
-  position: absolute;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .top-artist-track:hover .track-image {
@@ -162,6 +151,21 @@ body {
 .top-artist-track:hover .track-name {
   opacity: 1;
 }
+
+.track-name {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.5rem;
+  background: black;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
 
 /*가사*/
 

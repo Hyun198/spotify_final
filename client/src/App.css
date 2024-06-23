@@ -1,0 +1,196 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #176DA4;
+}
+
+.header_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.header_container h2 {
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  color: #fff;
+}
+
+
+.search_box {
+  width: max-content;
+  display: flex;
+  padding: 14px;
+  border-radius: 28px;
+  align-items: center;
+  background: #f6f6f6;
+  margin-top: 15px;
+}
+
+.search_box:focus-within {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input {
+  font-size: 16px;
+  color: #333333;
+  margin-left: 14px;
+  outline: none;
+  border: none;
+  width: 300px;
+  background: transparent;
+
+}
+
+.search-btn {
+  background-color: #333333;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
+
+.artists {
+  margin: auto;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.artist_imgs {
+  margin-top: 15px;
+  width: 150px;
+  height: 180px;
+  border-radius: 50%;
+}
+
+
+/*main-container*/
+
+.main_container {
+  display: flex;
+}
+
+.top-artist {
+  display: flex;
+  width: 30%;
+  margin-top: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f6f6;
+  border-radius: 20px;
+}
+
+.top-artist-info {
+  display: flex;
+  text-align: center;
+  gap: 15px;
+}
+
+.top-artist-name {
+  font-size: 2rem;
+  font-family: sans-serif;
+}
+
+
+.top-artist .genre {
+  text-transform: capitalize;
+  font-family: sans-serif;
+  background-color: #333333;
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.topArtist_imgs {
+  width: 200px;
+  height: 250px;
+  margin-top: 10px;
+  border-radius: 50%;
+}
+
+/* 탑 아티스트 트랙*/
+.top-artist-tracks {
+  background-color: #333;
+}
+
+.top-artist-track {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+
+.track-image {
+  width: 150px;
+  height: 200px;
+  transition: transform 0.3s ease;
+}
+
+.track-name {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.top-artist-track:hover .track-image {
+  transform: scale(1.1);
+}
+
+.top-artist-track:hover .track-name {
+  opacity: 1;
+}
+
+/*가사*/
+
+.lyrics_container {
+  display: flex;
+  margin-top: 5rem;
+  flex-direction: column;
+  background-color: #fff;
+  color: #333;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedTrack-title {
+  text-transform: capitalize;
+}
+
+.lyrics {
+  font-size: 20px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.translate-btn {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: fit-content;
+  font-size: 18px;
+  text-transform: uppercase;
+}

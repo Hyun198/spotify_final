@@ -56,6 +56,7 @@ const fetchArtist = async (token, searchTerm) => {
                 limit: 1
             }
         });
+
         return response.data.artists.items[0]; // 첫 번째 가수 정보 반환
     } catch (error) {
         console.error('Error fetching artist:', error);
@@ -70,12 +71,13 @@ const fetchTrack = async (token, searchTerm) => {
                 Authorization: `Bearer ${token}`
             },
             params: {
-                q: searchTerm,
+                q: `"${searchTerm}"`,
                 type: "track",
                 market: "KR",
-                limit: 1
+                limit: 20
             }
         });
+        console.log("fetch tracks:", response.data.tracks.items[0]);
         return response.data.tracks.items; // 노래 목록 반환
     } catch (error) {
         console.error('Error fetching track:', error);
@@ -94,6 +96,7 @@ app.post('/api/search', async (req, res) => {
         ]);
 
         let topArtistData = null;
+
         if (artist) {
             const topArtistTracks = await axios.get(`https://api.spotify.com/v1/artists/${artist.id}/top-tracks`, {
                 headers: {
@@ -108,21 +111,25 @@ app.post('/api/search', async (req, res) => {
                 artist,
                 tracks: topArtistTracks.data.tracks
             };
+
         }
+
+
+
         // 검색어와 일치하는 트랙을 우선적으로 정렬
         const sortedTracks = tracks.sort((a, b) => {
-            const aMatch = a.name.toLowerCase().includes(searchTerm.toLowerCase());
-            const bMatch = b.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const aMatch = a.name.toLowerCase() === searchTerm.toLowerCase();
+            const bMatch = b.name.toLowerCase() === searchTerm.toLowerCase();
             if (aMatch && !bMatch) return -1;
             if (!aMatch && bMatch) return 1;
             return 0;
         });
-
         res.json({
             artist: topArtistData ? topArtistData.artist : null,
             artistTracks: topArtistData ? topArtistData.tracks : [],
-            searchTracks: sortedTracks
+            searchTracks: sortedTracks.slice(0, 10) // 최대 10개의 트랙 반환
         });
+
 
     } catch (error) {
         console.error("Error searching artists:", error.message);
@@ -143,7 +150,6 @@ app.post('/api/track/select', async (req, res) => {
             optimizeQuery: true,
         };
         const lyrics = await getLyrics(options)
-        console.log(lyrics);
         console.log("가사 불러오기 성공");
         res.json({ lyrics: lyrics });
 

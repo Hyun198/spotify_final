@@ -30,11 +30,9 @@ function App() {
         throw new Error("Failed to search artists");
       }
       const data = await response.data;
-      console.log(data);
-
       setTopArtist(data.artist)
-      setTopArtistTracks(data.artistTracks);
-      setSearchTracks(data.searchTracks);
+      setTopArtistTracks(data.artistTracks.slice(0, 6)); // 상위 6개 트랙
+      setSearchTracks(data.searchTracks.slice(0, 1)); // 상위 1개 트랙
     } catch (error) {
       console.error(error.message);
     }
@@ -82,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className='title'>Spotify Clone</h1>
+      <h1 className='title'><a href="/">Spotify Genius</a></h1>
 
       <header className="header_container">
         <form className="search_box" onSubmit={searchArtists} >
@@ -92,9 +90,9 @@ function App() {
         </form>
       </header>
       <Container>
-        <Row className="search-result">
-          <Col className="top-artist-column">
-            {topArtist && (
+        {topArtist && (
+          <Row className="search-result">
+            <Col className="top-artist-column">
               <div className="top-artist">
                 <img className="topArtist_img" src={topArtist.images[0].url} alt={topArtist.name} />
                 <p className="top-artist-name">{topArtist.name}</p>
@@ -104,30 +102,42 @@ function App() {
                   ))}
                 </div>
               </div>
-            )}
-          </Col>
-          <Col className="top-artist-tracks-column">
-            <div className="top-artist-tracks">
-              {topArtistTracks.slice(0, 6).map((track) => (
-                <div key={track.id} className="top-artist-track" onClick={() => handleTrackSelect({ name: track.name, artist: track.artists[0].name })}>
-                  <img className="track-image" src={track.album.images[0].url} alt={track.album.name} />
-                  <div className="track-name">{track.name}</div>
+              {searchTracks.length > 0 && (
+                <div className="top-track" onClick={() => handleTrackSelect({ name: searchTracks[0].name, artist: searchTracks[0].artists[0].name })}>
+                  <img className="top-track-image" src={searchTracks[0].album.images[0].url} alt={searchTracks[0].album.name} />
+                  <div className="top-track-name">{searchTracks[0].name}</div>
                 </div>
-              ))}
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div className="lyrics_container">
-              <h2 className="selectedTrack-title">{selectedTrack}</h2>
-              <button className="translate-btn" onClick={toggleTranslation}>
-                {isTranslated ? '돌아가기' : '번역'}
-              </button>
-              <pre className='lyrics'>{isTranslated ? translatedLyrics : lyrics}</pre>
-            </div>
-          </Col>
-        </Row>
+              )}
+
+            </Col>
+            <Col className="top-artist-tracks-column">
+              <h2>Related Tracks</h2>
+              <div className="top-artist-tracks">
+
+                {topArtistTracks.slice(0, 6).map((track) => (
+                  <div key={track.id} className="top-artist-track" onClick={() => handleTrackSelect({ name: track.name, artist: track.artists[0].name })}>
+                    <img className="track-image" src={track.album.images[0].url} alt={track.album.name} />
+                    <div className="track-name">{track.name}</div>
+
+                  </div>
+                ))}
+              </div>
+            </Col>
+          </Row>
+        )}
+        {selectedTrack && (
+          <Row>
+            <Col>
+              <div className="lyrics_container">
+                <h2 className="selectedTrack-title">{selectedTrack.name}</h2>
+                <button className="translate-btn" onClick={toggleTranslation}>
+                  {isTranslated ? '돌아가기' : '번역'}
+                </button>
+                <pre className='lyrics'>{isTranslated ? translatedLyrics : lyrics}</pre>
+              </div>
+            </Col>
+          </Row>
+        )}
       </Container>
 
     </div>

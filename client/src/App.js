@@ -3,6 +3,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import React from 'react';
 import './App.css';
+import Header from './Component/Header';
+import SearchResult from './Component/SearchResult';
+import Translate from './Component/Translate';
+
 
 function App() {
   const [searchKey, setSearchKey] = useState("");
@@ -82,61 +86,31 @@ function App() {
     <div className="App">
       <h1 className='title'><a href="/">Spotify Genius</a></h1>
 
-      <header className="header_container">
-        <form className="search_box" onSubmit={searchArtists} >
-          <box-icon name='search-alt'></box-icon>
-          <input className="search-input" type="text" placeholder='아티스트,노래' value={searchKey} onChange={(e) => setSearchKey(e.target.value)} />
-          <button className="search-btn" type="submit">검색</button>
-        </form>
-      </header>
+      <Header
+        searchKey={searchKey}
+        setSearchKey={setSearchKey}
+        searchArtists={searchArtists}
+
+      />
+
       <Container>
         {topArtist && (
-          <Row className="search-result">
-            <Col className="top-artist-column">
-              <div className="top-artist">
-                <img className="topArtist_img" src={topArtist.images[0].url} alt={topArtist.name} />
-                <p className="top-artist-name">{topArtist.name}</p>
-                <div className='top-artist-info'>
-                  {topArtist.genres.map(genre => (
-                    <p key={genre} className='genre'>{genre}</p>
-                  ))}
-                </div>
-              </div>
-              {searchTracks.length > 0 && (
-                <div className="top-track" onClick={() => handleTrackSelect({ name: searchTracks[0].name, artist: searchTracks[0].artists[0].name })}>
-                  <img className="top-track-image" src={searchTracks[0].album.images[0].url} alt={searchTracks[0].album.name} />
-                  <div className="top-track-name">{searchTracks[0].name}</div>
-                </div>
-              )}
+          <SearchResult
+            topArtist={topArtist}
+            topArtistTracks={topArtistTracks}
+            searchTracks={searchTracks}
+            handleTrackSelect={handleTrackSelect}
 
-            </Col>
-            <Col className="top-artist-tracks-column">
-              <h2>Related Tracks</h2>
-              <div className="top-artist-tracks">
-
-                {topArtistTracks.slice(0, 6).map((track) => (
-                  <div key={track.id} className="top-artist-track" onClick={() => handleTrackSelect({ name: track.name, artist: track.artists[0].name })}>
-                    <img className="track-image" src={track.album.images[0].url} alt={track.album.name} />
-                    <div className="track-name">{track.name}</div>
-
-                  </div>
-                ))}
-              </div>
-            </Col>
-          </Row>
+          />
         )}
         {selectedTrack && (
-          <Row>
-            <Col>
-              <div className="lyrics_container">
-                <h2 className="selectedTrack-title">{selectedTrack.name}</h2>
-                <button className="translate-btn" onClick={toggleTranslation}>
-                  {isTranslated ? '돌아가기' : '번역'}
-                </button>
-                <pre className='lyrics'>{isTranslated ? translatedLyrics : lyrics}</pre>
-              </div>
-            </Col>
-          </Row>
+          <Translate
+            selectedTrack={selectedTrack}
+            lyrics={lyrics}
+            translatedLyrics={translatedLyrics}
+            isTranslated={isTranslated}
+            toggleTranslation={toggleTranslation}
+          />
         )}
       </Container>
 

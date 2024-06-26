@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap';
 
 const Translate = ({ lyrics, translatedLyrics, isTranslated, selectedTrack, toggleTranslation }) => {
+    const [currentLyrics, setCurrentLyrics] = useState('');
+
+    useEffect(() => {
+        const lyricsContainer = document.querySelector('.lyrics_container');
+
+        setTimeout(() => {
+            lyricsContainer.classList.add('show');
+            setCurrentLyrics(isTranslated ? translatedLyrics : lyrics);
+        }, 100);
+
+        return () => {
+            lyricsContainer.classList.remove('show');
+        }
+    }, [isTranslated, lyrics, translatedLyrics])
+
     return (
         <Row>
             <Col>
@@ -10,7 +25,7 @@ const Translate = ({ lyrics, translatedLyrics, isTranslated, selectedTrack, togg
                     <button className="translate-btn" onClick={toggleTranslation}>
                         {isTranslated ? '돌아가기' : '번역'}
                     </button>
-                    <pre className='lyrics'>{isTranslated ? translatedLyrics : lyrics}</pre>
+                    <pre className='lyrics'>{currentLyrics}</pre>
                 </div>
             </Col>
         </Row>

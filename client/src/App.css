@@ -256,15 +256,21 @@ body {
 .lyrics_container {
   margin: auto;
   display: flex;
-  margin-top: 5rem;
   width: 80%;
   flex-direction: column;
   background-color: #fff;
   color: #333;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   border-radius: 20px;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transform: translateY(20px)
+}
+
+.lyrics_container.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .selectedTrack-title {
@@ -272,6 +278,7 @@ body {
 }
 
 .lyrics {
+  width: 100%;
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
@@ -283,4 +290,28 @@ body {
   width: fit-content;
   font-size: 18px;
   text-transform: uppercase;
+}
+
+@media (max-width: 1200px) {
+  .lyrics {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 992px) {
+  .lyrics {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lyrics {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .lyrics {
+    font-size: 12px;
+  }
 }

@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import React from 'react';
 import './App.css';
 import Header from './Component/Header';
 import SearchResult from './Component/SearchResult';
 import Translate from './Component/Translate';
-
+import Loading from './Component/Loading';
 
 function App() {
   const [searchKey, setSearchKey] = useState("");
@@ -19,6 +18,7 @@ function App() {
   const [targetLang, setTargetLang] = useState('KO');
   const [isTranslated, setIsTranslated] = useState(false) //번역되어있는지 flag
 
+  const [loading, setLoading] = useState(false);
 
   const searchArtists = async (e) => {
     e.preventDefault();
@@ -44,8 +44,8 @@ function App() {
 
   const handleTrackSelect = async (track) => {
     try {
-      console.log(track);
       setSelectedTrack(track.name);
+      setLoading(true);
       const response = await axios.post('/api/track/select', track);
 
       if (response.status !== 200) {
@@ -57,10 +57,11 @@ function App() {
 
       setLyrics(Lyrics);
       setTranslatedLyrics('');
-      setIsTranslated(isTranslated) //false
-
+      setIsTranslated(false); //false
+      setLoading(false);
     } catch (error) {
       console.error(error.message);
+      setLoading(false);
     }
   }
 
@@ -68,17 +69,21 @@ function App() {
     try {
       const response = await axios.post('/api/translate', { lyrics, targetLang });
       setTranslatedLyrics(response.data.text);
-      setIsTranslated(!isTranslated); //true
-      console.log('번역완료');
-
+      setIsTranslated(true); //true
     } catch (error) {
       console.error('Error translating lyrics:', error.message);
     }
   }
 
   const toggleTranslation = () => {
-    handleTranslate();
-    setIsTranslated(!isTranslated)
+    if (isTranslated) {
+      setIsTranslated(false);
+    } else {
+      handleTranslate();
+      setIsTranslated(true)
+    }
+
+
   }
 
 
@@ -104,13 +109,20 @@ function App() {
           />
         )}
         {selectedTrack && (
-          <Translate
-            selectedTrack={selectedTrack}
-            lyrics={lyrics}
-            translatedLyrics={translatedLyrics}
-            isTranslated={isTranslated}
-            toggleTranslation={toggleTranslation}
-          />
+          <Row>
+            <Col>
+              {loading ? (
+                <Loading />
+              ) : (<Translate
+                selectedTrack={selectedTrack}
+                lyrics={lyrics}
+                translatedLyrics={translatedLyrics}
+                isTranslated={isTranslated}
+                toggleTranslation={toggleTranslation}
+              />)}
+            </Col>
+          </Row>
+
         )}
       </Container>
 

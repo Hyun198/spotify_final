@@ -8,6 +8,8 @@ import Header from './Component/Header';
 import SearchResult from './Component/SearchResult';
 import Translate from './Component/Translate';
 import Loading from './Component/Loading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faPause, faForward, faBackward } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [searchKey, setSearchKey] = useState("");
@@ -217,25 +219,32 @@ function App() {
 
         )}
       </Container>
-      <div className="App">
+      <div className="player">
         {!token ? (
           <button onClick={getToken}>Login with Spotify</button>
         ) : (
-          <div>
-            <button onClick={handlePlayPause}>Play/Pause</button>
-            <button onClick={handleNextTrack}>Next</button>
-            <button onClick={handlePrevTrack}>Previous</button>
-            <div>
-              <h2>Now Playing</h2>
+          <div className='player-container'>
+            <div className='now-playing'>
               {track && (
-                <div>
-                  <img src={track.album.images[0].url} alt={track.name} style={{ width: 100, height: 100 }} />
-                  <div>{track.name}</div>
-                  <div>{track.artists[0].name}</div>
-                  <div>{position} / {duration}</div>
+
+                <div className='playtrack-info'>
+                  <img className='playtrack-img' src={track.album.images[0].url} alt={track.name} />
+                  <div className="playback-details">
+                    <div className='playtrack-name'>{track.name}</div>
+                    <div className='playtrack-artist'>{track.artists[0].name}</div>
+                    {/*  <div className='playtrack-progress'> {position} / {duration}</div> */}
+
+                  </div>
+
                 </div>
               )}
             </div>
+            <div className="player-btn">
+              <button onClick={handlePrevTrack}><FontAwesomeIcon icon={faBackward} /></button>
+              <button onClick={handlePlayPause}><FontAwesomeIcon icon={paused ? faPlay : faPause} /></button>
+              <button onClick={handleNextTrack}><FontAwesomeIcon icon={faForward} /></button>
+            </div>
+
           </div>
         )}
       </div>

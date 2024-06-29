@@ -2,18 +2,28 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap';
 
 const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSelect }) => {
+
+    if (!topArtist || (topArtistTracks.length === 0 && searchTracks.length === 0)) {
+        return <div className="no-result">검색 결과가 없습니다.</div>
+    }
+    console.log("topArtist: ", topArtist);
+    console.log("searchTracks: ", searchTracks);
+    console.log("topArtistTracks: ", topArtistTracks);
+
     return (
         <Row className="search-result">
             <Col className="top-artist-column">
-                <div className="top-artist">
-                    <img className="topArtist_img" src={topArtist.images[0].url} alt={topArtist.name} />
-                    <p className="top-artist-name">{topArtist.name}</p>
-                    <div className='top-artist-info'>
-                        {topArtist.genres.map(genre => (
-                            <p key={genre} className='genre'>{genre}</p>
-                        ))}
+                {topArtist && (
+                    <div className="top-artist">
+                        <img className="topArtist_img" src={topArtist.images[0].url} alt={topArtist.name} />
+                        <p className="top-artist-name">{topArtist.name}</p>
+                        <div className='top-artist-info'>
+                            {topArtist.genres.map(genre => (
+                                <p key={genre} className='genre'>{genre}</p>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
                 {searchTracks.length > 0 && (
                     <div className="top-track" onClick={() => handleTrackSelect({ name: searchTracks[0].name, artist: searchTracks[0].artists[0].name })}>
                         <img className="top-track-image" src={searchTracks[0].album.images[0].url} alt={searchTracks[0].album.name} />

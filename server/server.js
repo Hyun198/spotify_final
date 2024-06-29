@@ -77,7 +77,6 @@ const fetchTrack = async (token, searchTerm) => {
                 limit: 20
             }
         });
-        console.log("fetch tracks:", response.data.tracks.items[0]);
         return response.data.tracks.items; // 노래 목록 반환
     } catch (error) {
         console.error('Error fetching track:', error);

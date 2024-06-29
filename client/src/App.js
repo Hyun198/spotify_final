@@ -10,6 +10,7 @@ import Translate from './Component/Translate';
 import Loading from './Component/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faForward, faBackward } from '@fortawesome/free-solid-svg-icons';
+import Playlists from './Component/Playlists';
 
 function App() {
   const [searchKey, setSearchKey] = useState("");
@@ -128,9 +129,11 @@ function App() {
         throw new Error("Failed to search artists");
       }
       const data = await response.data;
+
       setTopArtist(data.artist)
       setTopArtistTracks(data.artistTracks.slice(0, 6)); // 상위 6개 트랙
       setSearchTracks(data.searchTracks.slice(0, 1)); // 상위 1개 트랙
+
     } catch (error) {
       console.error(error.message);
     }
@@ -219,6 +222,9 @@ function App() {
 
         )}
       </Container>
+      {token && (
+        <Playlists accessToken={token} />
+      )}
       <div className="player">
         {!token ? (
           <button onClick={getToken}>Login with Spotify</button>
@@ -226,7 +232,6 @@ function App() {
           <div className='player-container'>
             <div className='now-playing'>
               {track && (
-
                 <div className='playtrack-info'>
                   <img className='playtrack-img' src={track.album.images[0].url} alt={track.name} />
                   <div className="playback-details">
@@ -244,7 +249,6 @@ function App() {
               <button onClick={handlePlayPause}><FontAwesomeIcon icon={paused ? faPlay : faPause} /></button>
               <button onClick={handleNextTrack}><FontAwesomeIcon icon={faForward} /></button>
             </div>
-
           </div>
         )}
       </div>

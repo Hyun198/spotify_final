@@ -6,9 +6,6 @@ const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSel
     if (!topArtist || (topArtistTracks.length === 0 && searchTracks.length === 0)) {
         return <div className="no-result">검색 결과가 없습니다.</div>
     }
-    console.log("topArtist: ", topArtist);
-    console.log("searchTracks: ", searchTracks);
-    console.log("topArtistTracks: ", topArtistTracks);
 
     return (
         <Row className="search-result">
@@ -25,7 +22,7 @@ const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSel
                     </div>
                 )}
                 {searchTracks.length > 0 && (
-                    <div className="top-track" onClick={() => handleTrackSelect({ name: searchTracks[0].name, artist: searchTracks[0].artists[0].name })}>
+                    <div className="top-track" onClick={() => handleTrackSelect({ id: searchTracks[0].id, name: searchTracks[0].name, artist: searchTracks[0].artists[0].name })}>
                         <img className="top-track-image" src={searchTracks[0].album.images[0].url} alt={searchTracks[0].album.name} />
                         <div className="top-track-name">{searchTracks[0].name}</div>
                     </div>
@@ -37,7 +34,7 @@ const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSel
                 <div className="top-artist-tracks">
 
                     {topArtistTracks.slice(0, 6).map((track) => (
-                        <div key={track.id} className="top-artist-track" onClick={() => handleTrackSelect({ name: track.name, artist: track.artists[0].name })}>
+                        <div key={track.id} className="top-artist-track" onClick={() => handleTrackSelect({ id: track.id, name: track.name, artist: track.artists[0].name })}>
                             <img className="track-image" src={track.album.images[0].url} alt={track.album.name} />
                             <div className="track-name">{track.name}</div>
 

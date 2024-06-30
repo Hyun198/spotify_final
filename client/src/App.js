@@ -9,7 +9,8 @@ import SearchResult from './Component/SearchResult';
 import Translate from './Component/Translate';
 import Loading from './Component/Loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faForward, faBackward } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faForward, faBackward, faList, faHeart as faHeartSolid, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import Playlists from './Component/Playlists';
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
   const [duration, setDuration] = useState(null);
   const [paused, setPaused] = useState(true);
 
+  const [showPlaylists, setShowPlaylists] = useState(false);
+  const [showPlayer, setShowPlayer] = useState(true);
 
   useEffect(() => {
     const accessToken = getAccessTokenFromUrl();
@@ -156,6 +159,17 @@ function App() {
       setTranslatedLyrics('');
       setIsTranslated(false); //false
       setLoading(false);
+
+      const trackId = track.id;
+      console.log("trackId: " + trackId);
+      await axios.put(`https://api.spotify.com/v1/me/player/play`, {
+        uris: [`spotify:track:${trackId}`]
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
     } catch (error) {
       console.error(error.message);
       setLoading(false);
@@ -179,9 +193,19 @@ function App() {
       handleTranslate();
       setIsTranslated(true)
     }
-
-
   }
+
+  const togglePlaylists = () => {
+    setShowPlaylists(!showPlaylists);
+  }
+
+  const togglePlayer = () => {
+    setShowPlayer(!showPlayer);
+  }
+
+
+
+
 
 
   return (
@@ -223,12 +247,13 @@ function App() {
         )}
       </Container>
       {token && (
-        <Playlists accessToken={token} />
+        <Playlists accessToken={token} showPlaylists={showPlaylists} />
       )}
-      <div className="player">
+      <div className={`player ${showPlayer ? 'expanded' : 'collapsed'}`}>
         {!token ? (
-          <button onClick={getToken}>Login with Spotify</button>
+          <span onClick={getToken}>Login</span>
         ) : (
+
           <div className='player-container'>
             <div className='now-playing'>
               {track && (
@@ -237,7 +262,7 @@ function App() {
                   <div className="playback-details">
                     <div className='playtrack-name'>{track.name}</div>
                     <div className='playtrack-artist'>{track.artists[0].name}</div>
-                    {/*  <div className='playtrack-progress'> {position} / {duration}</div> */}
+
 
                   </div>
 
@@ -245,6 +270,7 @@ function App() {
               )}
             </div>
             <div className="player-btn">
+              <button onClick={togglePlaylists}><FontAwesomeIcon icon={faList} /></button>
               <button onClick={handlePrevTrack}><FontAwesomeIcon icon={faBackward} /></button>
               <button onClick={handlePlayPause}><FontAwesomeIcon icon={paused ? faPlay : faPause} /></button>
               <button onClick={handleNextTrack}><FontAwesomeIcon icon={faForward} /></button>
@@ -252,6 +278,8 @@ function App() {
           </div>
         )}
       </div>
+
+
     </div>
   );
 }

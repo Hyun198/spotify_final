@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-const Playlists = ({ accessToken }) => {
+const Playlists = ({ accessToken, showPlaylists, handleAddToPlaylist }) => {
 
     const [playlists, setPlaylists] = useState([]);
     const [tracks, setTracks] = useState([]);
@@ -14,14 +14,13 @@ const Playlists = ({ accessToken }) => {
                         Authorization: `Bearer ${accessToken}`
                     }
                 });
-                console.log(response);
                 setPlaylists(response.data.items);
             } catch (error) {
                 console.error('error fetching playlists: ', error);
             }
         };
 
-        if (accessToken) {
+        if ([accessToken && showPlaylists]) {
             fetchPlayLists();
         }
     }, [accessToken]);
@@ -33,7 +32,6 @@ const Playlists = ({ accessToken }) => {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            console.log(response);
             setTracks(response.data.items);
         } catch (error) {
             console.error('error fetching tracks in playlist: ', error);
@@ -45,9 +43,14 @@ const Playlists = ({ accessToken }) => {
         fetchTracks(playlistId);
     }
 
+
+
     return (
-        <div>Playlists
-            <ul>
+        <div className={`playlists ${showPlaylists ? 'show' : 'hide'}`}>
+            <div className="playlists-header">
+                <span>Playlists</span>
+            </div>
+            <ul className="playlist-list">
                 {playlists.map((playlist) => (
                     <li key={playlist.id} onClick={() => handlePlaylistClick(playlist.id)}>
                         {playlist.name}
@@ -55,11 +58,14 @@ const Playlists = ({ accessToken }) => {
                 ))}
             </ul>
             {selectedPlaylistId && (
-                <div className="tracks">
-                    <h3>Tracks</h3>
+                <div className="tracks-header">
+                    <span>Tracks</span>
                     <ul>
                         {tracks.map((trackItem) => (
-                            <li key={trackItem.track.id}>{trackItem.track.name}</li>
+                            <li key={trackItem.track.id}>
+                                {trackItem.track.name}
+                                <button onClick={() => handleAddToPlaylist(selectedPlaylistId, trackItem.track.uri)}>Add</button>
+                            </li>
                         ))}
                     </ul>
                 </div>

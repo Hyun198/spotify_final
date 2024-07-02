@@ -20,7 +20,8 @@ Spotify Genius는 Spotify API와 Web Playback SDK를 사용하여 사용자에�
 - Spotify Web Playback SDK : Spotify 트랙 재생
 - React Bootstrap : UI 컴포넌트 스타일링
 - Font Awesome : UI 아이콘 사용
-- Genius API : 가사 번역
+- Genius API : 가사 불러오기
+- DeepL API : 가사 번역하는데 사용
 
 ## 기능 설명
 
@@ -61,6 +62,8 @@ Spotify Genius는 Spotify API와 Web Playback SDK를 사용하여 사용자에�
    ```
 
 3. Spotify 개발자 계정을 생성하고, 클라이언트 ID와 클라이언트 시크릿을 얻습니다. 그런 다음, `.env` 파일을 생성하고 다음과 같이 설정합니다.
+
+   genius API도 사용하기 위해 개발자 계정을 생성하고, API키를 서버측의 `.env` 파일에 넣습니다.
 
    ```env
    REACT_APP_SPOTIFY_CLIENT_ID=your_client_id
@@ -118,3 +121,39 @@ const getAccessToken = async () => {
   }
 };
 ````
+
+```가사 불러오기
+
+try {
+        const { name, artist } = req.body;
+        console.log(name, artist);
+        const apiKey = process.env.GENIUS_API_KEY;
+        const options = {
+            apiKey: apiKey,
+            title: name,
+            artist: artist,
+            optimizeQuery: true,
+        };
+        const lyrics = await getLyrics(options)
+        console.log("가사 불러오기 성공");
+        res.json({ lyrics: lyrics });
+
+    } catch (error) {
+        console.error('error selected track:', error.message);
+        res.status(500).json({ error: 'failed to select track' });
+    }
+```
+
+```가사 번역하기
+try {
+        const { lyrics, targetLang } = req.body;
+        console.log(lyrics, targetLang);
+        const apiKey = process.env.DEEPL_API_KEY;
+        const translator = new deepl.Translator(apiKey);
+        const result = await translator.translateText(lyrics, null, targetLang);
+        res.json(result);
+    } catch (error) {
+        console.error("Error translating lyrics:", error.message);
+        res.status(500).json({ error: "Failed to translate lyrics" });
+    }
+```

@@ -122,8 +122,7 @@ const getAccessToken = async () => {
 };
 ````
 
-```가사 불러오기
-
+```Genius API
 try {
         const { name, artist } = req.body;
         console.log(name, artist);
@@ -144,7 +143,7 @@ try {
     }
 ```
 
-```가사 번역하기
+```DeepL api
 try {
         const { lyrics, targetLang } = req.body;
         console.log(lyrics, targetLang);

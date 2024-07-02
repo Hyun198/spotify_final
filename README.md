@@ -94,9 +94,9 @@ Spotify Genius는 Spotify API와 Web Playback SDK를 사용하여 사용자에�
 
 Spotify 개발자 계정을 생성하고, 클라이언트 ID와 클라이언트 시크릿을 얻습니다. 그런 다음, `.env` 파일을 생성하고 다음과 같이 설정합니다.
 
-````env
+# Spotify API 토큰 받아오기, 정식 문서 참고
 
-```javascript
+```
 const getAccessToken = async () => {
   const authOptions = {
     url: "https://accounts.spotify.com/api/token",
@@ -120,9 +120,11 @@ const getAccessToken = async () => {
     console.error("Error fetching access token: ", error);
   }
 };
-````
+```
 
-```Genius API
+# Genius API
+
+```
 try {
         const { name, artist } = req.body;
         console.log(name, artist);
@@ -143,7 +145,9 @@ try {
     }
 ```
 
-```DeepL api
+# DeepL api
+
+```
 try {
         const { lyrics, targetLang } = req.body;
         console.log(lyrics, targetLang);

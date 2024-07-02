@@ -1,5 +1,5 @@
-![스크린샷 1](./assets/images/image.png)
-![스크린샷 2](./assets/images/image-1.png)
+![shoot1](assets/image.png)
+![shoot 2](assets/image-1.png)
 
 # Spotify Genius
 

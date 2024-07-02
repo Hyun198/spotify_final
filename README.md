@@ -1,3 +1,6 @@
+![스크린샷 1](<![first](image.png)>)
+![스크린샷 2](<![second](image-1.png)>)
+
 # Spotify Genius
 
 Spotify Genius는 Spotify API와 Web Playback SDK를 사용하여 사용자에게 음악을 검색하고 재생할 수 있는 기능을 제공하는 웹 애플리케이션입니다. 이 앱은 또한 가사를 검색하고 번역할 수 있는 기능을 제공합니다.

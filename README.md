@@ -50,7 +50,6 @@
   <summary>Client</summary>
   <ul>
     <li>React : 사용자 인터페이스 구축</li>
-    <li>Node: 여러 api통신 처리 및 클라이언트 요청 응답</li>
     <li>Axios : HTTP 요청 처리</li>
     <li>Spotify API : 음악 데이터 및 재생 제어</li>
     <li>Spotify Web Playback SDK : Spotify 트랙 재생</li>
@@ -62,8 +61,7 @@
 <details>
   <summary>Server</summary>
   <ul>
-    <li>Express Js</li>
-    <li>Node Js</li>
+    <li>Node, Express.js: 여러 api통신 처리 및 클라이언트 요청 응답</li>
   </ul>
 </details>
 

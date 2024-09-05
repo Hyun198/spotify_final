@@ -49,28 +49,28 @@
 <details>
   <summary>Client</summary>
   <ul>
-    React : 사용자 인터페이스 구축
-    Axios : HTTP 요청 처리
-    Spotify API : 음악 데이터 및 재생 제어
-    Spotify Web Playback SDK : Spotify 트랙 재생
-    React Bootstrap : UI 컴포넌트 스타일링
-    Font Awesome : UI 아이콘 사용
-    Genius API : 가사 불러오기
-    DeepL API : 가사 번역하는데 사용
+    <li> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react" /> : 사용자 인터페이스 구축</li>
+    <li>Axios : HTTP 요청 처리</li>
+    <li>Spotify API : 음악 데이터 및 재생 제어</li>
+    <li>Spotify Web Playback SDK : Spotify 트랙 재생</li>
+    <li><img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="bootstrap" /> : UI 컴포넌트 스타일링</li>
+    <li>Font Awesome : UI 아이콘 사용</li>
+    <li>Genius API : 가사 불러오기</li>
+    <li>DeepL API : 가사 번역하는데 사용</li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
-    <li><a href="https://nodejs.com/">Node.js</a></li>
+    <li><img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="expressjs" /></li>
+    <li><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="node" /></li>
   </ul>
 </details>
 
 <details>
 <summary>DevOps</summary>
-
+  <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="viscode">
 </details>
 
 <!-- Features -->

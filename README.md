@@ -13,7 +13,7 @@
 </p>
    
 <h4>
-    <a href="https://github.com/Louis3797/awesome-readme-template">Documentation</a>
+    <a href="https://developer.spotify.com/documentation/web-api"><img src="https://img.shields.io/badge/Spotify-1ED760?&style=for-the-badge&logo=spotify&logoColor=white"/>Documentation</a>
   </h4>
 </div>
 
@@ -49,12 +49,11 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react" /> : 사용자 인터페이스 구축</li>
+    <li>React : 사용자 인터페이스 구축</li>
+    <li>Node: 여러 api통신 처리 및 클라이언트 요청 응답</li>
     <li>Axios : HTTP 요청 처리</li>
     <li>Spotify API : 음악 데이터 및 재생 제어</li>
     <li>Spotify Web Playback SDK : Spotify 트랙 재생</li>
-    <li><img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="bootstrap" /> : UI 컴포넌트 스타일링</li>
-    <li>Font Awesome : UI 아이콘 사용</li>
     <li>Genius API : 가사 불러오기</li>
     <li>DeepL API : 가사 번역하는데 사용</li>
   </ul>

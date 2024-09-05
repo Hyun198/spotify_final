@@ -62,14 +62,9 @@
 <details>
   <summary>Server</summary>
   <ul>
-    <li><img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="expressjs" /></li>
-    <li><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="node" /></li>
+    <li>Express Js</li>
+    <li>Node Js</li>
   </ul>
-</details>
-
-<details>
-<summary>DevOps</summary>
-  <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="viscode">
 </details>
 
 <!-- Features -->
@@ -95,12 +90,6 @@ To run this project, you will need to add the following environment variables to
   `CLIENT_SECRET`
   `GENIUS_API_KEY`
   `DEEPL_API_KEY`
-
-This project uses Yarn as package manager
-
-```bash
- npm install --global
-```
 
 <!-- Installation -->
 

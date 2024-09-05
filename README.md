@@ -1,154 +1,201 @@
-![shoot1](assets/image.png)
-![shoot 2](assets/image-1.png)
+<div align="center">
 
-# Spotify Genius
+  <img src="./assets/spotify-logo.png" alt="logo" width="200" height="auto" />
+  <h1>Spotify Geni</h1>
+  
+  <p>
+    Spotify Genius는 Spotify API와 Web Playback SDK를 사용하여 사용자에게 음악을 검색하고 재생할 수 있는 기능을 제공하는 웹 애플리케이션입니다. 이 앱은 또한 가사를 검색하고 번역할 수 있는 기능을 제공합니다.
+  </p>
 
-Spotify Genius는 Spotify API와 Web Playback SDK를 사용하여 사용자에게 음악을 검색하고 재생할 수 있는 기능을 제공하는 웹 애플리케이션입니다. 이 앱은 또한 가사를 검색하고 번역할 수 있는 기능을 제공합니다.
+<!-- Badges -->
+<p>
+  
+</p>
+   
+<h4>
+    <a href="https://github.com/Louis3797/awesome-readme-template">Documentation</a>
+  </h4>
+</div>
 
-## 주요 기능
+<br />
+
+<!-- Table of Contents -->
+
+# :notebook_with_decorative_cover: Table of Contents
+
+- [About the Project](#star2-about-the-project)
+  - [Tech Stack](#space_invader-tech-stack)
+  - [Features](#dart-features)
+  - [Environment Variables](#key-environment-variables)
+- [Getting Started](#toolbox-getting-started)
+  - [Prerequisites](#bangbang-prerequisites)
+  - [Installation](#gear-installation)
+  - [Run Locally](#running-run-locally)
+- [Usage](#eyes-usage)
+- [Acknowledgements](#gem-acknowledgements)
+
+<!-- About the Project -->
+
+## :star2: About the Project
+
+<div align="center"> 
+  <img src="./assets/image.png" alt="screenshot" />
+</div>
+
+<!-- TechStack -->
+
+### :space_invader: Tech Stack
+
+<details>
+  <summary>Client</summary>
+  <ul>
+    React : 사용자 인터페이스 구축
+    Axios : HTTP 요청 처리
+    Spotify API : 음악 데이터 및 재생 제어
+    Spotify Web Playback SDK : Spotify 트랙 재생
+    React Bootstrap : UI 컴포넌트 스타일링
+    Font Awesome : UI 아이콘 사용
+    Genius API : 가사 불러오기
+    DeepL API : 가사 번역하는데 사용
+  </ul>
+</details>
+
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://nodejs.com/">Node.js</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>DevOps</summary>
+
+</details>
+
+<!-- Features -->
+
+### :dart: Features
 
 - Spotify에 로그인하여 사용자 인증
 - 아티스트와 트랙 검색
 - 선택한 트랙 또는 플레이리스트에 있는 트랙 재생 및 제어 (재생, 일시 정지, 다음 트랙, 이전 트랙)
 - 현재 재생 중인 트랙의 가사 표시 및 번역
 
-## 주요 기술 스택
+<!-- Env Variables -->
 
-- React : 사용자 인터페이스 구축
-- Axios : HTTP 요청 처리
-- Spotify API : 음악 데이터 및 재생 제어
-- Spotify Web Playback SDK : Spotify 트랙 재생
-- React Bootstrap : UI 컴포넌트 스타일링
-- Font Awesome : UI 아이콘 사용
-- Genius API : 가사 불러오기
-- DeepL API : 가사 번역하는데 사용
+### :key: Environment Variables
 
-## 기능 설명
+To run this project, you will need to add the following environment variables to your .env file
 
-    사용자 인증
-        Spotify OAuth 2.0을 사용하여 사용자를 인증합니다. 사용자가 앱에 로그인하면 Spotify API를 통해 데이터를 요청할 수 있는 액세스 토큰을 받습니다.
+- Clinet
+  `REACT_APP_CLIENT_ID`
+- Server
+  `PORT`
+  `CLIENT_ID`
+  `CLIENT_SECRET`
+  `GENIUS_API_KEY`
+  `DEEPL_API_KEY`
 
-    검색 기능
-        사용자는 아티스트와 트랙을 검색할 수 있습니다. 검색된 아티스트의 상위 트랙과 검색된 트랙의 결과를 보여줍니다.
+This project uses Yarn as package manager
 
-    트랙 재생 및 제어
-        사용자는 트랙을 재생, 일시 정지, 다음 트랙으로 건너뛰기, 이전 트랙으로 돌아가기 등의 재생 제어를 할 수 있습니다.
-
-    가사 표시 및 번역
-        현재 재생 중인 트랙의 가사를 표시하고 사용자가 선택한 언어로 번역할 수 있습니다.
-
-    플레이리스트 관리
-        사용자는 자신의 플레이리스트를 보고, 재생 중인 트랙을 선택한 플레이리스트에 추가할 수 있습니다.
-
-## 설치 및 실행 방법
-
-1. 이 리포지토리를 클론합니다.
-
-   ```bash
-   git clone https://github.com/yourusername/spotify-genius.git
-   cd spotify-genius
-   ```
-
-2. 필요한 패키지를 설치합니다.
-
-   ```bash
-   cd server
-   npm install
-
-   new bash
-   cd client
-   npm install
-
-   ```
-
-3. Spotify 개발자 계정을 생성하고, 클라이언트 ID와 클라이언트 시크릿을 얻습니다. 그런 다음, `.env` 파일을 생성하고 다음과 같이 설정합니다.
-
-   genius API도 사용하기 위해 개발자 계정을 생성하고, API키를 서버측의 `.env` 파일에 넣습니다.
-
-   ```env
-   REACT_APP_SPOTIFY_CLIENT_ID=your_client_id
-   REACT_APP_SPOTIFY_CLIENT_SECRET=your_client_secret
-   REACT_APP_SPOTIFY_REDIRECT_URI=http://localhost:3000/callback
-   ```
-
-4. 서버를 실행하여 액세스 토큰을 가져올 수 있도록 설정합니다.
-
-   ```bash
-   npm run dev
-   development - using nodemon
-   ```
-
-5. 클라이언트 앱을 실행합니다.
-
-   ```bash
-   npm start
-   ```
-
-6. 웹 브라우저에서 [http://localhost:3000](http://localhost:3000)으로 이동합니다.
-
-## Spotify API 사용 과정
-
-### 서버 측에서 공용 데이터 접근
-
-서버에서는 Spotify API에 접근하기 위해 액세스 토큰을 받아와야 합니다. `server.js` 파일에서는 클라이언트 ID와 클라이언트 시크릿을 사용하여 액세스 토큰을 요청합니다.
-
-Spotify 개발자 계정을 생성하고, 클라이언트 ID와 클라이언트 시크릿을 얻습니다. 그런 다음, `.env` 파일을 생성하고 다음과 같이 설정합니다.
-
-# Spotify API 토큰 받아오기, 정식 문서 참고
-
-```
-const getAccessToken = async () => {
-  const authOptions = {
-    url: "https://accounts.spotify.com/api/token",
-    headers: {
-      Authorization:
-        "Basic " +
-        Buffer.from(client_id + ":" + client_secret).toString("base64"),
-    },
-    form: {
-      grant_type: "client_credentials",
-    },
-    json: true,
-  };
-
-  try {
-    const response = await axios.post(authOptions.url, authOptions.form, {
-      headers: authOptions.headers,
-    });
-    return response.data.access_token;
-  } catch (error) {
-    console.error("Error fetching access token: ", error);
-  }
-};
+```bash
+ npm install --global
 ```
 
-# Genius API
+<!-- Installation -->
 
+### :gear: Installation
+
+Install my-project with npm
+
+```bash
+  yarn install my-project
+  cd my-project
 ```
-try {
-        const { name, artist } = req.body;
-        console.log(name, artist);
-        const apiKey = process.env.GENIUS_API_KEY;
-        const options = {
-            apiKey: apiKey,
-            title: name,
-            artist: artist,
-            optimizeQuery: true,
-        };
-        const lyrics = await getLyrics(options)
-        console.log("가사 불러오기 성공");
-        res.json({ lyrics: lyrics });
 
+<!-- Run Locally -->
+
+### :running: Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Hyun198/spotify_final.git
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```
+
+<!-- Usage -->
+
+## :eyes: Usage
+
+#### Spotify API 토큰 받아오기
+
+    const getAccessToken = async () => {
+    const authOptions = {
+      url: "https://accounts.spotify.com/api/token",
+      headers: {
+        Authorization:
+          "Basic " +
+          Buffer.from(client_id + ":" + client_secret).toString("base64"),
+      },
+      form: {
+        grant_type: "client_credentials",
+      },
+      json: true,
+    };
+
+    try {
+      const response = await axios.post(authOptions.url, authOptions.form, {
+        headers: authOptions.headers,
+      });
+      return response.data.access_token;
     } catch (error) {
-        console.error('error selected track:', error.message);
-        res.status(500).json({ error: 'failed to select track' });
+      console.error("Error fetching access token: ", error);
     }
-```
+    };
 
-# DeepL api
+#### Genius API
 
-```
-try {
+    try {
+          const { name, artist } = req.body;
+          console.log(name, artist);
+          const apiKey = process.env.GENIUS_API_KEY;
+          const options = {
+              apiKey: apiKey,
+              title: name,
+              artist: artist,
+              optimizeQuery: true,
+          };
+          const lyrics = await getLyrics(options)
+          console.log("가사 불러오기 성공");
+          res.json({ lyrics: lyrics });
+
+      } catch (error) {
+          console.error('error selected track:', error.message);
+          res.status(500).json({ error: 'failed to select track' });
+      }
+
+#### DeepL api
+
+    try {
         const { lyrics, targetLang } = req.body;
         console.log(lyrics, targetLang);
         const apiKey = process.env.DEEPL_API_KEY;
@@ -159,4 +206,14 @@ try {
         console.error("Error translating lyrics:", error.message);
         res.status(500).json({ error: "Failed to translate lyrics" });
     }
-```
+
+<!-- Acknowledgments -->
+
+## :gem: Acknowledgements
+
+Use this section to mention useful resources and libraries that you have used in your projects.
+
+- [Shields.io](https://shields.io/)
+- [Awesome README](https://github.com/matiassingers/awesome-readme)
+- [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#travel--places)
+- [Readme Template](https://github.com/othneildrew/Best-README-Template)

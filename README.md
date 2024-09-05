@@ -201,9 +201,6 @@ Install dependencies server and start
 
 ## :gem: Acknowledgements
 
-Use this section to mention useful resources and libraries that you have used in your projects.
-
-- [Shields.io](https://shields.io/)
-- [Awesome README](https://github.com/matiassingers/awesome-readme)
-- [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#travel--places)
-- [Readme Template](https://github.com/othneildrew/Best-README-Template)
+- [Spotify Api](https://developer.spotify.com/documentation/web-api)
+- [DeepL Api ](https://www.deepl.com/ko/pro-api/nl/pl/pro-api?utm_term=&utm_campaign=KO%7CPMAX%7CC%7CKorean&utm_source=google&utm_medium=paid&hsa_acc=1083354268&hsa_cam=20765813469&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAjwreW2BhBhEiwAavLwfOwX4xfY-YatISqrWkm_hmOT_roV7hoNVLCdIVQ5Z_Ck2X7YPpsEgxoCNy4QAvD_BwE)
+- [Genius Api](https://genius.com/developers)

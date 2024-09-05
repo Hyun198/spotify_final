@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="./assets/spotify-logo.png" alt="logo" width="200" height="auto" />
+  <img src="./assets/spotify-logo.png" alt="logo" width="500" height="auto" />
   <h1>Spotify Geni</h1>
   
   <p>
@@ -9,12 +9,12 @@
 
 <!-- Badges -->
 <p>
-  
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react" />
+  <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="bootstrap" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="node" />
+  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="expressjs" />
 </p>
    
-<h4>
-    <a href="https://developer.spotify.com/documentation/web-api"><img src="https://img.shields.io/badge/Spotify-1ED760?&style=for-the-badge&logo=spotify&logoColor=white"/>Documentation</a>
-  </h4>
 </div>
 
 <br />
@@ -129,15 +129,19 @@ Go to the project directory
   cd my-project
 ```
 
-Install dependencies
+Install dependencies client and start
 
 ```bash
+  cd client
   npm install
+  npm start
 ```
 
-Start the server
+Install dependencies server and start
 
 ```bash
+  cd server
+  npm install
   npm start
 ```
 
@@ -175,7 +179,6 @@ Start the server
 
     try {
           const { name, artist } = req.body;
-          console.log(name, artist);
           const apiKey = process.env.GENIUS_API_KEY;
           const options = {
               apiKey: apiKey,
@@ -184,7 +187,6 @@ Start the server
               optimizeQuery: true,
           };
           const lyrics = await getLyrics(options)
-          console.log("가사 불러오기 성공");
           res.json({ lyrics: lyrics });
 
       } catch (error) {
@@ -196,7 +198,7 @@ Start the server
 
     try {
         const { lyrics, targetLang } = req.body;
-        console.log(lyrics, targetLang);
+
         const apiKey = process.env.DEEPL_API_KEY;
         const translator = new deepl.Translator(apiKey);
         const result = await translator.translateText(lyrics, null, targetLang);

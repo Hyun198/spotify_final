@@ -87,9 +87,9 @@
 
 To run this project, you will need to add the following environment variables to your .env file
 
-- Clinet
+- Clinet <br>
   `REACT_APP_CLIENT_ID`
-- Server
+- Server <br>
   `PORT`
   `CLIENT_ID`
   `CLIENT_SECRET`

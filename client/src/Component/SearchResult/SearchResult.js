@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap';
+import './SearchResult.style.css';
 
 const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSelect }) => {
 

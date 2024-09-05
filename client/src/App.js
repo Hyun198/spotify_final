@@ -2,16 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import './App.css';
-
 import { getToken, getAccessTokenFromUrl } from './Component/Auth';
-import Header from './Component/Header';
-import SearchResult from './Component/SearchResult';
-import Translate from './Component/Translate';
-import Loading from './Component/Loading';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faForward, faBackward, faList, faHeart as faHeartSolid, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
-import Playlists from './Component/Playlists';
+import Header from './Component/Header/Header';
+import SearchResult from './Component/SearchResult/SearchResult';
+import Translate from './Component/Translate/Translate';
+import Loading from './Component/Loading/Loading';
+import Playlist from './Component/PlayList/PlayList'
+import Player from './Component/Player/Player';
 
 function App() {
   const [searchKey, setSearchKey] = useState("");
@@ -70,10 +67,6 @@ function App() {
           });
         });
 
-        player.addListener('not_ready', ({ device_id }) => {
-          console.log('Device ID has gone offline', device_id);
-        });
-
         player.addListener('player_state_changed', (state) => {
           if (!state) {
             return;
@@ -113,9 +106,6 @@ function App() {
       console.error('Error skipping to previous track', error);
     });
   };
-
-
-
 
 
   const searchArtists = async (e) => {
@@ -204,21 +194,13 @@ function App() {
   }
 
 
-
-
-
-
   return (
     <div className="App">
-      <h1 className='title'><a href="/">Spotify Genius</a></h1>
-
       <Header
         searchKey={searchKey}
         setSearchKey={setSearchKey}
         searchArtists={searchArtists}
-
       />
-
       <Container>
         {topArtist && (
           <SearchResult
@@ -226,7 +208,6 @@ function App() {
             topArtistTracks={topArtistTracks}
             searchTracks={searchTracks}
             handleTrackSelect={handleTrackSelect}
-
           />
         )}
         {selectedTrack && (
@@ -243,43 +224,26 @@ function App() {
               />)}
             </Col>
           </Row>
-
         )}
       </Container>
+
       {token && (
-        <Playlists accessToken={token} showPlaylists={showPlaylists} />
+        <Playlist accessToken={token} showPlaylists={showPlaylists} />
       )}
       <div className={`player ${showPlayer ? 'expanded' : 'collapsed'}`}>
         {!token ? (
           <span onClick={getToken}>Login</span>
         ) : (
-
-          <div className='player-container'>
-            <div className='now-playing'>
-              {track && (
-                <div className='playtrack-info'>
-                  <img className='playtrack-img' src={track.album.images[0].url} alt={track.name} />
-                  <div className="playback-details">
-                    <div className='playtrack-name'>{track.name}</div>
-                    <div className='playtrack-artist'>{track.artists[0].name}</div>
-
-
-                  </div>
-
-                </div>
-              )}
-            </div>
-            <div className="player-btn">
-              <button onClick={togglePlaylists}><FontAwesomeIcon icon={faList} /></button>
-              <button onClick={handlePrevTrack}><FontAwesomeIcon icon={faBackward} /></button>
-              <button onClick={handlePlayPause}><FontAwesomeIcon icon={paused ? faPlay : faPause} /></button>
-              <button onClick={handleNextTrack}><FontAwesomeIcon icon={faForward} /></button>
-            </div>
-          </div>
+          <Player
+            track={track}
+            paused={paused}
+            togglePlaylists={togglePlaylists}
+            handlePlayPause={handlePlayPause}
+            handleNextTrack={handleNextTrack}
+            handlePrevTrack={handlePrevTrack}
+          />
         )}
       </div>
-
-
     </div>
   );
 }

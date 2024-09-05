@@ -1,0 +1,69 @@
+/*player design*/
+.player span {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    text-transform: uppercase;
+    color: #1DB954;
+    background-color: #191414;
+    cursor: pointer;
+
+}
+
+.player-container {
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.playtrack-info {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.playtrack-img {
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+}
+
+.playback-details {
+    color: white;
+    margin-right: 10px;
+}
+
+.playtrack-name {
+    height: 50%;
+    font-size: 20px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.playtrack-artist {
+    font-weight: 800;
+}
+
+.player-btn button {
+    padding: 20px;
+    margin: 0px 5px;
+    border-radius: 45%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.player-btn button:hover {
+    background-color: #333333;
+    color: white;
+}

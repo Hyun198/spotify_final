@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-const Playlists = ({ accessToken, showPlaylists, handleAddToPlaylist }) => {
+import './PlayList.style.css'
+
+const Playlist = ({ accessToken, showPlaylists, handleAddToPlaylist }) => {
 
     const [playlists, setPlaylists] = useState([]);
     const [tracks, setTracks] = useState([]);
@@ -74,4 +76,4 @@ const Playlists = ({ accessToken, showPlaylists, handleAddToPlaylist }) => {
     )
 }
 
-export default Playlists
+export default Playlist

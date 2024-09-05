@@ -1,0 +1,78 @@
+/*playList*/
+.playlists {
+    width: 250px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+.playlists.show {
+    left: 0;
+}
+
+.playlists.hide {
+    left: -250px;
+}
+
+.playlists-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ccc;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.playlist-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.playlist-list li {
+    padding: 5px 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.playlist-list li:hover {
+    background-color: #ddd;
+
+}
+
+.tracks-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.tracks-header span {
+    background-color: #ccc;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.tracks-header ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tracks-header li {
+    padding: 5px 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+.tracks-header li:hover {
+    background-color: #ddd;
+}

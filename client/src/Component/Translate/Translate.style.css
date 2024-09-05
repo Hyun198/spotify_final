@@ -1,0 +1,38 @@
+.lyrics_container {
+    margin: auto;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    background-color: #fff;
+    color: #333;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px)
+}
+
+.lyrics_container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.selectedTrack-title {
+    text-transform: capitalize;
+}
+
+.lyrics {
+    width: 100%;
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.translate-btn {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: fit-content;
+    font-size: 18px;
+    text-transform: uppercase;
+}

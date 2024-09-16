@@ -3,7 +3,7 @@ import './Header.style.css'
 const Header = ({ searchKey, setSearchKey, searchArtists }) => {
     return (
         <div className="header_container">
-            <h1 className='title'><a href="/">Spotify Genius</a></h1>
+            <h1 className='title'>Spotify Genius</h1>
             <form className="search_box" onSubmit={searchArtists}>
                 <box-icon name="search-alt"></box-icon>
                 <input

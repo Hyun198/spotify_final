@@ -6,6 +6,8 @@ body {
   background: linear-gradient(90deg, rgba(42, 41, 55, 1) 0%, rgba(31, 121, 9, 1) 14%, rgba(0, 212, 255, 1) 100%);
 }
 
+
+
 @media (max-width: 1200px) {
   .lyrics {
     font-size: 18px;

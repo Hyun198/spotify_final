@@ -36,3 +36,20 @@
     font-size: 18px;
     text-transform: uppercase;
 }
+
+@media screen and (max-width: 768px) {
+    .lyrics_container {
+        margin: auto;
+        display: flex;
+        width: fit-content;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .lyrics_container {
+        overflow: scroll;
+        width: 80%;
+        font-size: 10px;
+    }
+}

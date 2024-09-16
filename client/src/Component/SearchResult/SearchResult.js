@@ -22,12 +22,7 @@ const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSel
                         </div>
                     </div>
                 )}
-                {searchTracks.length > 0 && (
-                    <div className="top-track" onClick={() => handleTrackSelect({ id: searchTracks[0].id, name: searchTracks[0].name, artist: searchTracks[0].artists[0].name })}>
-                        <img className="top-track-image" src={searchTracks[0].album.images[0].url} alt={searchTracks[0].album.name} />
-                        <div className="top-track-name">{searchTracks[0].name}</div>
-                    </div>
-                )}
+
 
             </Col>
             <Col className="top-artist-tracks-column">

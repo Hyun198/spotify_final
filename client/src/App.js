@@ -193,6 +193,12 @@ function App() {
     setShowPlayer(!showPlayer);
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('spotifyToken');
+    setToken(null);
+    window.location.href = '/'
+  }
+
 
   return (
     <div className="App">
@@ -234,14 +240,17 @@ function App() {
         {!token ? (
           <span onClick={getToken}>Login</span>
         ) : (
-          <Player
-            track={track}
-            paused={paused}
-            togglePlaylists={togglePlaylists}
-            handlePlayPause={handlePlayPause}
-            handleNextTrack={handleNextTrack}
-            handlePrevTrack={handlePrevTrack}
-          />
+          <>
+            <span onClick={handleLogout}>Logout</span>
+            <Player
+              track={track}
+              paused={paused}
+              togglePlaylists={togglePlaylists}
+              handlePlayPause={handlePlayPause}
+              handleNextTrack={handleNextTrack}
+              handlePrevTrack={handlePrevTrack}
+            />
+          </>
         )}
       </div>
     </div>

@@ -24,6 +24,7 @@
 }
 
 .header_container .search_box {
+    position: relative;
     width: max-content;
     display: flex;
     padding: 14px;
@@ -49,9 +50,32 @@
 }
 
 .header_container .search_box .search-btn {
+    position: absolute;
     background-color: #333333;
     color: white;
+    padding: 5px;
     border-radius: 10px;
+    right: 5px;
     outline: none;
     border: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    .header_container .search_box {
+        display: flex;
+        padding: 10px;
+        border-radius: 28px;
+        align-items: center;
+        background: #f6f6f6;
+        margin-top: 15px;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    .header_container .search_box {
+        width: 200px;
+        padding: 5px;
+    }
 }

@@ -149,12 +149,20 @@ app.post('/api/track/select', async (req, res) => {
             optimizeQuery: true,
         };
         const lyrics = await getLyrics(options)
-        console.log("가사 불러오기 성공");
-        res.json({ lyrics: lyrics });
+
+        if (!lyrics) {
+            throw new Error('가사 불러오기 실패');
+        }
+
+        res.json({ lyrics: lyrics }); //가사 불러오기 성공
 
     } catch (error) {
         console.error('error selected track:', error.message);
-        res.status(500).json({ error: 'failed to select track' });
+        if (error.message === '가사 불러오기 실패') {
+            res.status(404).json({ error: '해당 트랙의 가사 정보가 없습니다.' });
+        } else {
+            res.status(500).json({ error: '트랙 선택에 실패했습니다.' });
+        }
     }
 })
 

@@ -83,30 +83,6 @@ function App() {
     }
   }, [token]);
 
-  const handlePlayPause = () => {
-    player.togglePlay().then(() => {
-      console.log('Toggled playback!');
-    }).catch(error => {
-      console.error('Error toggling playback', error);
-    });
-  };
-
-  const handleNextTrack = () => {
-    player.nextTrack().then(() => {
-      console.log('Skipped to next track!');
-    }).catch(error => {
-      console.error('Error skipping to next track', error);
-    });
-  };
-
-  const handlePrevTrack = () => {
-    player.previousTrack().then(() => {
-      console.log('Skipped to previous track!');
-    }).catch(error => {
-      console.error('Error skipping to previous track', error);
-    });
-  };
-
 
   const searchArtists = async (e) => {
     e.preventDefault();
@@ -246,9 +222,7 @@ function App() {
               track={track}
               paused={paused}
               togglePlaylists={togglePlaylists}
-              handlePlayPause={handlePlayPause}
-              handleNextTrack={handleNextTrack}
-              handlePrevTrack={handlePrevTrack}
+              player={player}
             />
           </>
         )}

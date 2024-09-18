@@ -137,7 +137,7 @@ app.post('/api/search', async (req, res) => {
 app.post('/api/track/select', async (req, res) => {
     try {
         const { name, artist } = req.body;
-        console.log(name, artist);
+        /* console.log(name, artist); */
         const apiKey = process.env.GENIUS_API_KEY;
         const options = {
             apiKey: apiKey,
@@ -166,7 +166,7 @@ app.post('/api/track/select', async (req, res) => {
 app.post('/api/translate', async (req, res) => {
     try {
         const { lyrics, targetLang } = req.body;
-        console.log(lyrics, targetLang);
+        /* console.log(lyrics, targetLang); */
         const apiKey = process.env.DEEPL_API_KEY;
         const translator = new deepl.Translator(apiKey);
         const result = await translator.translateText(lyrics, null, targetLang);

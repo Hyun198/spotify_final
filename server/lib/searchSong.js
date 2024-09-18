@@ -19,11 +19,13 @@ module.exports = async function (options) {
 			authHeader ? reqUrl : `${reqUrl}&access_token=${apiKey}`,
 			authHeader && { headers }
 		);
+
 		if (data.response.hits.length === 0) return null;
+
 		const results = data.response.hits.map((val) => {
 			const { full_title, song_art_image_url, id, url } = val.result;
 			return { id, title: full_title, albumArt: song_art_image_url, url };
-		});
+		}); // 검색 결과에서 필요한 정보만 추출 
 		return results;
 	} catch (e) {
 		throw e;

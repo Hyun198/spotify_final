@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './PlayList.style.css'
 
-const Playlist = ({ accessToken, showPlaylists, handleAddToPlaylist }) => {
+const Playlist = ({ accessToken, showPlaylists }) => {
 
     const [playlists, setPlaylists] = useState([]);
     const [tracks, setTracks] = useState([]);
@@ -66,7 +66,7 @@ const Playlist = ({ accessToken, showPlaylists, handleAddToPlaylist }) => {
                         {tracks.map((trackItem) => (
                             <li key={trackItem.track.id}>
                                 {trackItem.track.name}
-                                <button onClick={() => handleAddToPlaylist(selectedPlaylistId, trackItem.track.uri)}>Add</button>
+
                             </li>
                         ))}
                     </ul>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap';
 import './SearchResult.style.css';
 
 const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSelect }) => {
@@ -9,8 +8,8 @@ const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSel
     }
 
     return (
-        <Row className="search-result">
-            <Col className="top-artist-column">
+        <div className="search-result">
+            <div className="top-artist-column">
                 {topArtist && (
                     <div className="top-artist">
                         <img className="topArtist_img" src={topArtist.images[0].url} alt={topArtist.name} />
@@ -24,8 +23,8 @@ const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSel
                 )}
 
 
-            </Col>
-            <Col className="top-artist-tracks-column">
+            </div>
+            <div className="top-artist-tracks-column">
                 <h2>Related Tracks</h2>
                 <div className="top-artist-tracks">
 
@@ -37,8 +36,8 @@ const SearchResult = ({ topArtist, topArtistTracks, searchTracks, handleTrackSel
                         </div>
                     ))}
                 </div>
-            </Col>
-        </Row>
+            </div>
+        </div>
     )
 }
 

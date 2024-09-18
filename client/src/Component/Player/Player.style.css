@@ -118,3 +118,43 @@
     }
 
 }
+
+@media screen and (max-width: 320px) {
+
+    .playtrack-img {
+        width: 60px;
+        height: 60px;
+        margin-left: 20px;
+    }
+
+    .player span {
+        font-size: 14px;
+    }
+
+
+    .playtrack-info {
+        gap: 5px;
+    }
+
+    .playtrack-artist {
+        display: none;
+    }
+
+    .playtrack-name {
+        font-size: 13px;
+
+    }
+
+    .player-btn {
+        display: flex;
+        width: 50%;
+    }
+
+    .player-btn button {
+        padding: 10px;
+        font-size: 8px;
+        margin: 0px 2;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+}

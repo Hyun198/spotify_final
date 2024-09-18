@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
 const axios = require('axios');
 const qs = require('qs');
 const app = express();
@@ -14,15 +13,13 @@ const PORT = process.env.PORT || 5000;
 
 
 app.use(express.json())
-app.use(bodyParser.json())
 app.use(cors());
 
 //Spotify api 설정
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
-const REDIRECT_URI = "http://localhost:3000"
 const AUTH_ENDPOINT = "https://accounts.spotify.com/api/token"
-const RESPONSE_TYPE = "token"
+
 
 
 const getAccessToken = async () => {

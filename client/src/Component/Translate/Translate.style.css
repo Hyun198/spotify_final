@@ -10,7 +10,8 @@
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transform: translateY(20px)
+    transform: translateY(20px);
+    padding-bottom: 100px;
 }
 
 .lyrics_container.show {
@@ -25,8 +26,10 @@
 .lyrics {
     text-align: center;
     width: 100%;
-    font-size: 20px;
+    font-size: 15px;
     transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+
 }
 
 .translate-btn {
@@ -52,6 +55,15 @@
         overflow: scroll;
         width: 100%;
         font-size: 15px;
+        font-weight: 500;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .lyrics_container {
+        overflow: scroll;
+        width: 100%;
+        font-size: 14px;
         font-weight: 500;
     }
 }

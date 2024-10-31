@@ -27,10 +27,6 @@
   - [Tech Stack](#space_invader-tech-stack)
   - [Features](#dart-features)
   - [Environment Variables](#key-environment-variables)
-- [Getting Started](#toolbox-getting-started)
-  - [Installation](#gear-installation)
-  - [Run Locally](#running-run-locally)
-- [Usage](#eyes-usage)
 - [Acknowledgements](#gem-acknowledgements)
 
 <!-- About the Project -->
@@ -88,118 +84,16 @@ To run this project, you will need to add the following environment variables to
   `GENIUS_API_KEY`
   `DEEPL_API_KEY`
 
-<!-- Installation -->
-
-### :gear: Installation
-
-Install my-project with npm
-
-```bash
-  yarn install my-project
-  cd my-project
-```
-
-<!-- Run Locally -->
-
-### :running: Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/Hyun198/spotify_final.git
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies client and start
-
-```bash
-  cd client
-  npm install
-  npm start
-```
-
-Install dependencies server and start
-
-```bash
-  cd server
-  npm install
-  npm start
-```
-
-<!-- Usage -->
-
 ## :eyes: Usage
-
-#### Spotify API 토큰 받아오기
-
-    const getAccessToken = async () => {
-    const authOptions = {
-      url: "https://accounts.spotify.com/api/token",
-      headers: {
-        Authorization:
-          "Basic " +
-          Buffer.from(client_id + ":" + client_secret).toString("base64"),
-      },
-      form: {
-        grant_type: "client_credentials",
-      },
-      json: true,
-    };
-
-    try {
-      const response = await axios.post(authOptions.url, authOptions.form, {
-        headers: authOptions.headers,
-      });
-      return response.data.access_token;
-    } catch (error) {
-      console.error("Error fetching access token: ", error);
-    }
-    };
-
-#### Genius API
-
-    try {
-          const { name, artist } = req.body;
-          const apiKey = process.env.GENIUS_API_KEY;
-          const options = {
-              apiKey: apiKey,
-              title: name,
-              artist: artist,
-              optimizeQuery: true,
-          };
-          const lyrics = await getLyrics(options)
-          res.json({ lyrics: lyrics });
-
-      } catch (error) {
-          console.error('error selected track:', error.message);
-          res.status(500).json({ error: 'failed to select track' });
-      }
-
-#### DeepL api
-
-    try {
-        const { lyrics, targetLang } = req.body;
-
-        const apiKey = process.env.DEEPL_API_KEY;
-        const translator = new deepl.Translator(apiKey);
-        const result = await translator.translateText(lyrics, null, targetLang);
-        res.json(result);
-    } catch (error) {
-        console.error("Error translating lyrics:", error.message);
-        res.status(500).json({ error: "Failed to translate lyrics" });
-    }
 
 <!-- Acknowledgments -->
 
 ## :gem: Acknowledgements
 
+공식문서
+
 - [Spotify Api](https://developer.spotify.com/documentation/web-api) : Spotify Api 공식 문서
-- [DeepL Api ](https://www.deepl.com/ko/pro-api/nl/pl/pro-api?utm_term=&utm_campaign=KO%7CPMAX%7CC%7CKorean&utm_source=google&utm_medium=paid&hsa_acc=1083354268&hsa_cam=20765813469&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAjwreW2BhBhEiwAavLwfOwX4xfY-YatISqrWkm_hmOT_roV7hoNVLCdIVQ5Z_Ck2X7YPpsEgxoCNy4QAvD_BwE) : DeepL Api 공식문서
+- [DeepL Api ](https://www.deepl.com/ko/pro-api/nl/pl/pro-api?utm_term=&utm_campaign=KO%7CPMAX%7CC%7CKorean&utm_source=google&utm_medium=paid&hsa_acc=1083354268&hsa_cam=20765813469&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAjwreW2BhBhEiwAavLwfOwX4xfY-YatISqrWkm_hmOT_roV7hoNVLCdIVQ5Z_Ck2X7YPpsEgxoCNy4QAvD_BwE) : DeepL Api
 - [Genius Api](https://genius.com/developers) : Genius Api 공식 문서
 
 ## Improvement

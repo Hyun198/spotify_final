@@ -41,30 +41,25 @@
 
 ### :space_invader: Tech Stack
 
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li>React : 사용자 인터페이스 구축</li>
-    <li>Axios : HTTP 요청 처리</li>
-    <li>Spotify API : 음악 데이터 및 재생 제어</li>
-    <li>Spotify Web Playback SDK : Spotify 트랙 재생</li>
-    <li>Genius API : 가사 불러오기</li>
-    <li>DeepL API : 가사 번역하는데 사용</li>
-  </ul>
-</details>
+<h3>Client</h3>
+<ul>
+  <li>React : 사용자 인터페이스 구축</li>
+  <li>Axios : HTTP 요청 처리</li>
+  <li>Spotify API : 음악 데이터 및 재생 제어</li>
+  <li>Spotify Web Playback SDK : Spotify 트랙 재생</li>
+  <li>Genius API : 가사 불러오기</li>
+  <li>DeepL API : 가사 번역하는데 사용</li>
+</ul>
 
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li>Node, Express.js: 여러 api통신 처리 및 클라이언트 요청 응답</li>
-  </ul>
-</details>
+<h3>Server</h3>
+<ul>
+  <li>Node, Express.js: 여러 api통신 처리 및 클라이언트 요청 응답</li>
+</ul>
 
 <!-- Features -->
 
 ### :dart: Features
 
-- Spotify에 로그인하여 사용자 인증
 - 아티스트와 트랙 검색
 - 선택한 트랙 또는 플레이리스트에 있는 트랙 재생 및 제어 (재생, 일시 정지, 다음 트랙, 이전 트랙)
 - 현재 재생 중인 트랙의 가사 표시 및 번역

@@ -184,26 +184,33 @@ function App() {
         searchArtists={searchArtists}
       />
       <Container>
-        {topArtist && (
+        {topArtist ? (
           <SearchResult
             topArtist={topArtist}
             topArtistTracks={topArtistTracks}
             searchTracks={searchTracks}
             handleTrackSelect={handleTrackSelect}
           />
+        ) : (
+          <div className="hero">
+            <h1>음악과 가사를 만나보세요!</h1>
+            <p>좋아하는 아티스트를 검색하고, 노래의 가사와 번역을 감상하세요.</p>
+          </div>
         )}
         {selectedTrack && (
           <Row>
             <Col>
               {loading ? (
                 <Loading />
-              ) : (<Translate
-                selectedTrack={selectedTrack}
-                lyrics={lyrics}
-                translatedLyrics={translatedLyrics}
-                isTranslated={isTranslated}
-                toggleTranslation={toggleTranslation}
-              />)}
+              ) : (
+                <Translate
+                  selectedTrack={selectedTrack}
+                  lyrics={lyrics}
+                  translatedLyrics={translatedLyrics}
+                  isTranslated={isTranslated}
+                  toggleTranslation={toggleTranslation}
+                />
+              )}
             </Col>
           </Row>
         )}

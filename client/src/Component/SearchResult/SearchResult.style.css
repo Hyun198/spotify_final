@@ -1,8 +1,9 @@
 .search-result {
+
     display: flex;
-    margin-top: 10px;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .artists {
@@ -13,21 +14,24 @@
 
 .artist_imgs {
     margin-top: 15px;
-    width: 150px;
-    height: 180px;
+    width: 130px;
+    height: 150px;
     border-radius: 50%;
 }
 
 
 .top-artist-column {
-    width: 20%;
+    position: relative;
+    width: 15%;
     display: flex;
     flex-direction: column;
-    height: min-content;
-    padding: 20px;
+    padding: 10px;
     background-color: #f8f9fa;
-    border-radius: 20px;
+    border-radius: 10px;
+    left: 100px;
+    top: 20px;
     align-items: center;
+    box-shadow: 5px 3px 20px black;
 }
 
 .top-artist {
@@ -126,8 +130,8 @@
 }
 
 .track-image {
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 200px;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
@@ -152,8 +156,8 @@
     /* 위치 설정 */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 200px;
     background-color: rgba(0, 0, 0, 0.5);
     /* 배경색 및 투명도 조절 */
     color: white;

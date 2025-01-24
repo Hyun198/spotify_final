@@ -6,7 +6,17 @@ body {
   background: linear-gradient(90deg, rgba(42, 41, 55, 1) 0%, rgba(31, 121, 9, 1) 14%, rgba(0, 212, 255, 1) 100%);
 }
 
+.hero {
+  text-align: center;
+  padding: 50px;
 
+  color: white;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
 
 @media (max-width: 1200px) {
   .lyrics {
